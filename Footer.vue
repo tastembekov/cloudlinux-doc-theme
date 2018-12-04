@@ -1,18 +1,19 @@
 <template>
   <div class="footer">
-      <div class="sidebar-width"></div>
-      <div><img src="/we-are-cloudlinux.svg" alt="We are Cloudlinux"></div>
-      
+      <!-- <div class="sidebar-width"></div> -->
+      <div><a :href="$site.themeConfig.cloudlinuxSite"><img src="/we-are-cloudlinux.svg" alt="We are Cloudlinux"></a></div>
+      <div>2018. CloudLinux Inc</div>
+
       <!-- <div>2018. CloudLinux Inc</div> -->
       <div>
-          <div v-for="item in $site.themeConfig.bottomLinks" :key="item"> 
+          <div v-for="item in $site.themeConfig.bottomLinks" :key="item">
               <a :href="item.url" target="_blank">{{ item.text }}</a>
           </div>
       </div>
-      
+
       <div class="social">
         <span>Stay in touch</span>
-        <a v-for="item in $site.themeConfig.social" 
+        <a v-for="item in $site.themeConfig.social"
             :key="item"
             :href="item.url" target="_blank">
             <img :src="item.logo">
@@ -31,15 +32,16 @@ export default {
 <style lang="stylus" scoped>
 @require './styles/config.styl'
 .footer
+    margin-left $sidebarWidth + 2rem
     color $grayTextColor
     text-align center
     border-top 1px solid $borderColor
     height 102px
-    width 100%
+    // width 100%
     background #fff
-    width 100%
     display flex
-    // justify-content center
+    flex-flow row wrap
+    justify-content space-around
     align-items center
     // margin-left 2rem
 
@@ -66,4 +68,10 @@ export default {
 .sidebar-width
     width $sidebarWidth + 2rem
 
+@media (max-width: $MQMobile)
+  .footer
+    justify-content center
+    margin-left 0
+    div
+      display block
 </style>
