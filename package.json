@@ -20,17 +20,6 @@
     "scripts": {
       "lint": "eslint --fix --ext .js,.vue ."
     },
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
-    },
-    "lint-staged": {
-      "*.{js,vue}": [
-        "eslint --fix",
-        "git add"
-      ]
-    },
     "dependencies": {
       "@fortawesome/fontawesome-svg-core": "^1.2.2",
       "@fortawesome/free-brands-svg-icons": "^5.2.0",
