@@ -1,10 +1,12 @@
 <template>
   <div class="footer">
       <!-- <div class="sidebar-width"></div> -->
-      <div><a :href="$site.themeConfig.cloudlinuxSite"><img src="/we-are-cloudlinux.svg" alt="We are Cloudlinux"></a></div>
+      <div>
+        <a :href="$site.themeConfig.cloudlinuxSite">
+          img src="./we-are-cloudlinux.svg" alt="We are Cloudlinux">
+        </a>
+      </div>
       <div>2018. CloudLinux Inc</div>
-
-      <!-- <div>2018. CloudLinux Inc</div> -->
       <div>
           <div v-for="item in $site.themeConfig.bottomLinks" :key="item">
               <a :href="item.url" target="_blank">{{ item.text }}</a>
