@@ -67,9 +67,12 @@ import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
+import GTranslateIO from './GTranslateIO.vue'
+
+Vue.component('gtranslate-io', GTranslateIO)
 
 export default {
-  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup, Footer },
+  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup, Footer},
 
   data () {
     return {

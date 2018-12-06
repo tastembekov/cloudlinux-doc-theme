@@ -3,7 +3,7 @@
       <!-- <div class="sidebar-width"></div> -->
       <div>
         <a :href="$site.themeConfig.cloudlinuxSite">
-          img src="./we-are-cloudlinux.svg" alt="We are Cloudlinux">
+          <img src="./we-are-cloudlinux.svg" alt="We are Cloudlinux">
         </a>
       </div>
       <div>2018. CloudLinux Inc</div>
