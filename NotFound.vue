@@ -14,13 +14,20 @@ const msgs = [
   `How did we get here?`,
   `That's a Four-Oh-Four.`,
   `Looks like we've got some broken links.`
-]
+];
 
 export default {
+  created() {
+    // redirect to default URL instead of 404
+    const defaultURL = this.$site.themeConfig.defaultURL;
+    if (defaultURL) {
+      this.$router.push(defaultURL);
+    }
+  },
   methods: {
-    getMsg () {
-      return msgs[Math.floor(Math.random() * msgs.length)]
+    getMsg() {
+      return msgs[Math.floor(Math.random() * msgs.length)];
     }
   }
-}
+};
 </script>
