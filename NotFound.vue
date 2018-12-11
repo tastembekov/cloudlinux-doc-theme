@@ -19,8 +19,22 @@ const msgs = [
 export default {
   created() {
     // redirect to default URL instead of 404
+
+    const redirectionMapping = this.$site.themeConfig.redirectionMapping;
+    if (redirectionMapping) {
+      // debugger
+      if (/.htm[l]*$/.test(this.$route.fullPath)) {
+        const newUrl = redirectionMapping[this.$route.fullPath];
+        // debugger
+        if (newUrl) {
+          this.$router.replace(newUrl);
+          return;
+        }
+      }
+    }
+
     const defaultURL = this.$site.themeConfig.defaultURL;
-    if (defaultURL) {
+    if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
     }
   },
