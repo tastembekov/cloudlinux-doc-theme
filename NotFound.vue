@@ -22,10 +22,11 @@ export default {
 
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
     if (redirectionMapping) {
-      // debugger
+      console.log(this.$route.fullPath);
       if (/.htm[l]*[\/]*$/.test(this.$route.fullPath)) {
         const newUrl = redirectionMapping[this.$route.fullPath];
-        // debugger
+        console.log(newUrl);
+        console.log(this.$route.fullPath);
         if (newUrl) {
           this.$router.replace(newUrl);
           return;
