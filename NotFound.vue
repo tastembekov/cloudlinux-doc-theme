@@ -23,7 +23,7 @@ export default {
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
     if (redirectionMapping) {
       // debugger
-      if (/.htm[l]*$/.test(this.$route.fullPath)) {
+      if (/.htm[l]*[\/]*$/.test(this.$route.fullPath)) {
         const newUrl = redirectionMapping[this.$route.fullPath];
         // debugger
         if (newUrl) {
