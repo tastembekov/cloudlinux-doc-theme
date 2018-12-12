@@ -18,8 +18,6 @@ const msgs = [
 
 export default {
   created() {
-    // redirect to default URL instead of 404
-
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
     console.log(this.$route.fullPath);
     console.log(redirectionMapping);
@@ -32,11 +30,6 @@ export default {
           return;
         }
       }
-    }
-
-    const defaultURL = this.$site.themeConfig.defaultURL;
-    if (defaultURL && this.$route.fullPath === "/") {
-      this.$router.push(defaultURL);
     }
   },
   methods: {
