@@ -21,12 +21,12 @@ export default {
     // redirect to default URL instead of 404
 
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
+    console.log(this.$route.fullPath);
+    console.log(redirectionMapping);
     if (redirectionMapping) {
-      console.log(this.$route.fullPath);
       if (/.htm[l]*[\/]*$/.test(this.$route.fullPath)) {
         const newUrl = redirectionMapping[this.$route.fullPath];
         console.log(newUrl);
-        console.log(this.$route.fullPath);
         if (newUrl) {
           this.$router.replace(newUrl);
           return;
