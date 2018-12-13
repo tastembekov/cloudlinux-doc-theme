@@ -23,6 +23,7 @@ export default {
     };
   },
   created() {
+    console.log(1)
     const defaultURL = this.$site.themeConfig.defaultURL;
     console.log(this.$route.fullPath);
     if (defaultURL && this.$route.fullPath === "/") {
