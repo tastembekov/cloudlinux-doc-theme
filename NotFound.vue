@@ -18,7 +18,9 @@ const msgs = [
 
 export default {
   data() {
-    isRender: false;
+    return {
+      isRender: false
+    };
   },
   created() {
     const defaultURL = this.$site.themeConfig.defaultURL;
