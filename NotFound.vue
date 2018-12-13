@@ -27,6 +27,7 @@ export default {
     if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
       this.isRender = false;
+      console.log("isRender=" + isRender)
       return;
     }
 
