@@ -21,7 +21,6 @@ export default {
     const defaultURL = this.$site.themeConfig.defaultURL;
     if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
-      this.$forceUpdate();
       return;
     }
 
