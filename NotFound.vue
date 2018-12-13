@@ -19,14 +19,14 @@ const msgs = [
 export default {
   data() {
     return {
-      isRender: false
+      isRender: true
     };
   },
   created() {
     const defaultURL = this.$site.themeConfig.defaultURL;
     if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
-      this.isRender = true;
+      this.isRender = false;
       return;
     }
 
@@ -39,7 +39,7 @@ export default {
         console.log(newUrl);
         if (newUrl) {
           this.$router.replace(newUrl);
-          this.isRender = true;
+          this.isRender = false;
           return;
         }
       }
