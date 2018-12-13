@@ -1,6 +1,6 @@
-<template>
-  <div class="theme-container">
-    <div v-if="isRender" class="content">
+<template v-if="isRender">
+  <div v-show="isRender" class="theme-container">
+    <div class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
       <router-link to="/">Take me home.</router-link>
@@ -24,10 +24,11 @@ export default {
   },
   created() {
     const defaultURL = this.$site.themeConfig.defaultURL;
+    console.log(this.$route.fullPath);
     if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
       this.isRender = false;
-      console.log("isRender=" + isRender)
+      console.log("isRender=" + this.isRender);
       return;
     }
 
