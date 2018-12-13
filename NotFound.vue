@@ -19,7 +19,7 @@ const msgs = [
 export default {
   data() {
     return {
-      isRender: true
+      isRender: false
     };
   },
   created() {
@@ -27,7 +27,6 @@ export default {
     console.log(this.$route.fullPath);
     if (defaultURL && this.$route.fullPath === "/") {
       this.$router.push(defaultURL);
-      this.isRender = false;
       console.log("isRender=" + this.isRender);
       return;
     }
@@ -41,11 +40,11 @@ export default {
         console.log(newUrl);
         if (newUrl) {
           this.$router.replace(newUrl);
-          this.isRender = false;
           return;
         }
       }
     }
+    thos.isRender = true;
   },
   methods: {
     getMsg() {
