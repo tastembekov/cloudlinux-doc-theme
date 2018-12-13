@@ -1,5 +1,5 @@
-<template v-if="isRender">
-  <div class="theme-container">
+<template>
+  <div v-if="isRender" class="theme-container">
     <div class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
