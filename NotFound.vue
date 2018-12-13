@@ -18,6 +18,13 @@ const msgs = [
 
 export default {
   created() {
+    const defaultURL = this.$site.themeConfig.defaultURL;
+    if (defaultURL && this.$route.fullPath === "/") {
+      this.$router.push(defaultURL);
+      this.$forceUpdate();
+      return;
+    }
+
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
     console.log(this.$route.fullPath);
     console.log(redirectionMapping);
@@ -30,12 +37,6 @@ export default {
           return;
         }
       }
-    }
-
-    const defaultURL = this.$site.themeConfig.defaultURL;
-    if (defaultURL && this.$route.fullPath === "/") {
-      this.$router.push(defaultURL);
-      this.$forceUpdate();
     }
   },
   methods: {
