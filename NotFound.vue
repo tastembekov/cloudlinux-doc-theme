@@ -1,5 +1,5 @@
 <template v-if="isRender">
-  <div v-show="isRender" class="theme-container">
+  <div class="theme-container">
     <div class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
@@ -44,7 +44,7 @@ export default {
         }
       }
     }
-    thos.isRender = true;
+    this.isRender = true;
   },
   methods: {
     getMsg() {
