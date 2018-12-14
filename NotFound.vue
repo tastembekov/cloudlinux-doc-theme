@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isRender" class="theme-container">
+  <div class="theme-container">
     <div class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
@@ -17,35 +17,18 @@ const msgs = [
 ];
 
 export default {
-  data() {
-    return {
-      isRender: false
-    };
-  },
   created() {
-    console.log(1)
-    const defaultURL = this.$site.themeConfig.defaultURL;
-    console.log(this.$route.fullPath);
-    if (defaultURL && this.$route.fullPath === "/") {
-      this.$router.push(defaultURL);
-      console.log("isRender=" + this.isRender);
-      return;
-    }
 
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
-    console.log(this.$route.fullPath);
-    console.log(redirectionMapping);
     if (redirectionMapping) {
       if (/.htm[l]*[\/]*$/.test(this.$route.fullPath)) {
         const newUrl = redirectionMapping[this.$route.fullPath];
-        console.log(newUrl);
         if (newUrl) {
           this.$router.replace(newUrl);
           return;
         }
       }
     }
-    this.isRender = true;
   },
   methods: {
     getMsg() {
