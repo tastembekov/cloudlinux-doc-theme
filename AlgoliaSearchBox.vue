@@ -31,11 +31,6 @@ export default {
           userOptions,
           {
             inputSelector: '#algolia-search-input'
-            // FIXME: it generates incorrect attribute and search is returned always null
-            // // #697 Make docsearch work well at i18n mode.
-            // algoliaOptions: Object.assign({
-            //   'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
-            // }, algoliaOptions)
           }
         ))
       })

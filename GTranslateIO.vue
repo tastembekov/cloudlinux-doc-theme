@@ -10,9 +10,9 @@ export default {
     if (isClient) {
       var self = this;
 
-      const proto = window.location.protocol;
+      const proto = "https:";
       const path = window.location.pathname.split(this.$localePath).join("");
-      const host = location.host; // for the test
+      const host = this.$site.themeConfig.translationSource;
 
       const url = `${proto}//${this.$lang}.${host}/${path}`;
 
