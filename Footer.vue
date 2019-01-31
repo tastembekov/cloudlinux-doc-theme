@@ -6,7 +6,7 @@
           <img src="./we-are-cloudlinux.svg" alt="We are Cloudlinux">
         </a>
       </div>
-      <div class="footer-company-title">2018. CloudLinux Inc</div>
+      <div class="footer-company-title">{{ year }}. CloudLinux Inc</div>
       <div>
           <div v-for="item in $site.themeConfig.bottomLinks" :key="item">
               <a :href="item.url" target="_blank">{{ item.text }}</a>
@@ -27,7 +27,13 @@
 
 <script>
 export default {
-    name: 'Footer'
+    name: 'Footer',
+
+    computed: {
+        year() {
+            return (new Date()).getFullYear();
+        }
+    },
 }
 </script>
 
