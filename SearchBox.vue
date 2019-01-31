@@ -3,6 +3,7 @@
     <input
       @input="query = $event.target.value"
       aria-label="Search"
+      placeholder="Search"
       :value="query"
       :class="{ 'focused': focused }"
       autocomplete="off"

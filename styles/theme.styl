@@ -56,8 +56,6 @@ body
 
 .content:not(.custom)
   @extend $wrapper
-  > *:first-child
-    margin-top $navbarHeight
   a:hover
     text-decoration underline
   p.demo
@@ -103,14 +101,11 @@ strong
   font-weight 600
 
 h1, h2, h3, h4, h5, h6
-  font-weight 600
   line-height 1.25
+  font-weight: normal
   .content:not(.custom) > &
-    margin-top (0.5rem - $navbarHeight)
-    padding-top ($navbarHeight + 1rem)
     margin-bottom 0
     &:first-child
-      margin-top -1.5rem
       margin-bottom 1rem
       + p, + pre, + .custom-block
         margin-top 2rem
@@ -118,15 +113,14 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.2rem
+  font-size 2.14rem
 
 h2
-  font-size 1.65rem
+  font-size 1.28rem
   padding-bottom .3rem
-  border-bottom 1px solid $borderColor
 
 h3
-  font-size 1.35rem
+  font-size 1.14rem
 
 a.header-anchor
   font-size 0.85em
@@ -186,5 +180,9 @@ th, td
       display none
     .page
       padding-left 0
+
+@media (min-width: $MQMobile)
+  .sidebar
+    margin-top 2rem
 
 @require './mobile.styl'

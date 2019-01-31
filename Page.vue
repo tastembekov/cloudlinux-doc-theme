@@ -2,6 +2,12 @@
   <div class="page">
     <slot name="top"/>
 
+    <Breadcrumb class="page-breadcrumb" />
+
+    <div class="page-nav-wrapper">
+      <PageNav :sidebar-items="sidebarItems" />
+    </div>
+
     <Content :custom="false"/>
 
     <div class="page-edit">
@@ -26,46 +32,20 @@
       </div>
     </div>
 
-    <div class="page-nav" v-if="prev || next">
-      <p class="inner">
-        <span
-          v-if="prev"
-          class="prev"
-        >
-          ←
-          <router-link
-            v-if="prev"
-            class="prev"
-            :to="prev.path"
-          >
-            {{ prev.title || prev.path }}
-          </router-link>
-        </span>
-
-        <span
-          v-if="next"
-          class="next"
-        >
-          <router-link
-            v-if="next"
-            :to="next.path"
-          >
-            {{ next.title || next.path }}
-          </router-link>
-          →
-        </span>
-      </p>
-    </div>
-
     <slot name="bottom"/>
   </div>
 </template>
 
 <script>
-import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+import { normalize, outboundRE, endingSlashRE } from './util'
+
+import Breadcrumb from './components/Breadcrumb.vue';
+import PageNav from './components/PageNav.vue';
 
 export default {
   props: ['sidebarItems'],
+
+  components: { Breadcrumb, PageNav },
 
   computed: {
     lastUpdated () {
@@ -82,28 +62,6 @@ export default {
         return this.$site.themeConfig.lastUpdated
       }
       return 'Last Updated'
-    },
-
-    prev () {
-      const prev = this.$page.frontmatter.prev
-      if (prev === false) {
-        return
-      } else if (prev) {
-        return resolvePage(this.$site.pages, prev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
-      }
-    },
-
-    next () {
-      const next = this.$page.frontmatter.next
-      if (next === false) {
-        return
-      } else if (next) {
-        return resolvePage(this.$site.pages, next, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
-      }
     },
 
     editLink () {
@@ -167,31 +125,6 @@ export default {
     }
   }
 }
-
-function resolvePrev (page, items) {
-  return find(page, items, -1)
-}
-
-function resolveNext (page, items) {
-  return find(page, items, 1)
-}
-
-function find (page, items, offset) {
-  const res = []
-  items.forEach(item => {
-    if (item.type === 'group') {
-      res.push(...item.children || [])
-    } else {
-      res.push(item)
-    }
-  })
-  for (let i = 0; i < res.length; i++) {
-    const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
-      return res[i + offset]
-    }
-  }
-}
 </script>
 
 <style lang="stylus">
@@ -200,6 +133,15 @@ function find (page, items, offset) {
 
 .page
   padding-bottom 2rem
+  padding-top 6rem
+
+.page-breadcrumb
+  margin-left 3rem
+
+.page-nav-wrapper
+  max-width: 847px;
+  margin: 0 3rem;
+  position relative
 
 .page-edit
   @extend $wrapper
@@ -221,20 +163,20 @@ function find (page, items, offset) {
       font-weight 400
       color #aaa
 
-.page-nav
-  @extend $wrapper
-  padding-top 1rem
-  padding-bottom 0
-  .inner
-    min-height 2rem
-    margin-top 0
-    border-top 1px solid $borderColor
-    padding-top 1rem
-    overflow auto // clear float
-  .next
-    float right
+.content
+  h1
+    max-width 80%
 
 @media (max-width: $MQMobile)
+  .page
+    padding-top 5rem
+
+  .page-breadcrumb
+    margin-left 1.5rem
+
+  .page-nav-wrapper
+    display none
+
   .page-edit
     .edit-link
       margin-bottom .5rem
@@ -242,5 +184,9 @@ function find (page, items, offset) {
       font-size .8em
       float none
       text-align left
+
+  .content
+    h1
+      max-width 100%
 
 </style>
