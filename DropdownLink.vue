@@ -3,11 +3,12 @@
     class="dropdown-wrapper"
     :class="{ open }"
   >
+    <span class="title">{{ item.title }}:</span>
     <a
       class="dropdown-title"
       @click="toggle"
     >
-      <span class="title">{{ item.text }}</span>
+      <span class="text">{{ item.text }}</span>
       <span
         class="arrow"
         :class="open ? 'down' : 'right'"
@@ -81,14 +82,13 @@ export default {
 
 .dropdown-wrapper
   cursor pointer
+  color: #FFFFFF
   .dropdown-title
-    display block
-    &:hover
-      border-color transparent
+    display inline-block
+    border-top: 2px solid #FFF;
     .arrow
       vertical-align middle
       margin-top -1px
-      margin-left 0.4rem
   .nav-dropdown
     .dropdown-item
       color inherit
@@ -137,6 +137,7 @@ export default {
     .nav-dropdown
       transition height .1s ease-out
       overflow hidden
+      background-color #fff
       .dropdown-item
         h4
           border-top 0
@@ -151,7 +152,7 @@ export default {
 
 @media (min-width: $MQMobile)
   .dropdown-wrapper
-    height 1.8rem
+    height 2.5rem
     &:hover .nav-dropdown
       // override the inline style.
       display block !important
