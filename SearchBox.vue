@@ -2,8 +2,8 @@
   <div class="search-box">
     <input
       @input="query = $event.target.value"
-      aria-label="Search"
-      placeholder="Search"
+      :aria-label="inputLabel"
+      :placeholder="inputLabel"
       :value="query"
       :class="{ 'focused': focused }"
       autocomplete="off"
@@ -42,12 +42,11 @@ export default {
     return {
       query: "",
       focused: false,
-      focusIndex: 0,
-      queryDefault: "Search"
+      focusIndex: 0
     };
   },
   created() {
-    this.query = this.queryDefault;
+    this.query = this.inputLabel;
   },
 
   watch: {
@@ -56,9 +55,12 @@ export default {
         this.query = "";
       } else {
         if (!this.query) {
-          this.query = this.queryDefault;
+          this.query = this.inputLabel;
         }
       }
+    },
+    inputLabel() {
+      this.query = this.inputLabel;
     }
   },
   computed: {
@@ -71,13 +73,13 @@ export default {
     },
 
     suggestions () {
-      const query = this.query.trim().toLowerCase()
-      if (!query && query != this.queryDefault) {
+      const query = this.query.trim().toLowerCase();
+      if (!query && query !== this.inputLabel) {
         return
       }
 
       const { pages, themeConfig } = this.$site
-      const max = themeConfig.searchMaxSuggestions || 5
+      const max = themeConfig.searchMaxSuggestions || 5;
       const localePath = this.$localePath
       const matches = item => (
         item.title &&
@@ -114,6 +116,10 @@ export default {
       const navCount = (this.$site.themeConfig.nav || []).length
       const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
+    },
+
+    inputLabel () {
+      return this.$themeLocaleConfig.search || 'Search';
     }
   },
 

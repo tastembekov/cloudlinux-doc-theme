@@ -35,7 +35,7 @@
       }"
     >
       <a :href="$site.themeConfig.try_free" target="_blank" class="btn">
-        {{ this.tryFreeTitle }}
+        {{ tryFreeTitle }}
       </a>
 
       <NavLinks class="can-hide"/>
@@ -83,7 +83,7 @@ export default {
     },
 
     tryFreeTitle() {
-      return this.$themeLocaleConfig.try_free || 'Try Free';
+      return this.$themeLocaleConfig.tryFree || 'Try Free';
     }
   }
 }

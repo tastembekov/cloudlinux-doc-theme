@@ -8,18 +8,16 @@
       </div>
       <div class="footer-company-title">{{ year }}. CloudLinux Inc</div>
       <div>
-          <div v-for="item in $site.themeConfig.bottomLinks" :key="item">
+          <div v-for="item in $themeLocaleConfig.bottomLinks">
               <a :href="item.url" target="_blank">{{ item.text }}</a>
           </div>
       </div>
 
       <div class="social">
-        <span class="footer-social-text">Stay in touch</span>
-        <a v-for="item in $site.themeConfig.social"
-            :key="item"
-            :href="item.url" target="_blank">
-            <img :src="item.logo" class="footer-social-logo">
-        </a>
+        <span class="footer-social-text">{{ $themeLocaleConfig.stayInTouch }}</span>
+          <a v-for="item in $site.themeConfig.social" :href="item.url" target="_blank">
+              <img :src="item.logo" class="footer-social-logo">
+          </a>
       </div>
   </div>
 </template>
