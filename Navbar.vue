@@ -35,7 +35,7 @@
       }"
     >
       <a :href="$site.themeConfig.try_free" target="_blank" class="btn">
-        Try Free
+        {{ tryFreeTitle }}
       </a>
 
       <NavLinks class="can-hide"/>
@@ -80,6 +80,10 @@ export default {
 
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+
+    tryFreeTitle() {
+      return this.$themeLocaleConfig.tryFree || 'Try Free';
     }
   }
 }
