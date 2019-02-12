@@ -3,7 +3,7 @@
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <router-link
-      :to="$localePath"
+      :to="localePath"
       class="home-link"
     >
       <img
@@ -84,6 +84,10 @@ export default {
 
     tryFreeTitle() {
       return this.$themeLocaleConfig.tryFree || 'Try Free';
+    },
+
+    localePath() {
+      return this.$localePath + 'introduction';
     }
   }
 }
