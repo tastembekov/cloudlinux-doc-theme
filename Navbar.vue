@@ -87,7 +87,7 @@ export default {
     },
 
     localePath() {
-      return this.$localePath + 'introduction';
+      return this.$localePath + this.defaultURL;
     }
   }
 }
