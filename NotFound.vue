@@ -1,5 +1,5 @@
 <template>
-  <div class="theme-container">
+  <div class="theme-container" v-if="showNotFound">
     <div class="content">
       <h1>404</h1>
       <blockquote>{{ getMsg() }}</blockquote>
@@ -17,18 +17,22 @@ const msgs = [
 ];
 
 export default {
+  data() {
+    return {
+      showNotFound: false
+    };
+  },
   created() {
-
     const redirectionMapping = this.$site.themeConfig.redirectionMapping;
     if (redirectionMapping) {
-      if (/.htm[l]*[\/]*$/.test(this.$route.fullPath)) {
-        const newUrl = redirectionMapping[this.$route.fullPath];
-        if (newUrl) {
-          this.$router.replace(newUrl);
-          return;
-        }
+      const newUrl = redirectionMapping[this.$route.fullPath];
+      if (newUrl) {
+        this.$router.replace(newUrl);
+        return;
       }
     }
+
+    this.showNotFound = true;
   },
   methods: {
     getMsg() {
