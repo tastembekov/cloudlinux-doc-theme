@@ -109,6 +109,7 @@ export default {
         color #555
     .algolia-docsearch-footer
       border-color $borderColor
+      visibility hidden
     .ds-cursor .algolia-docsearch-suggestion--content
       background-color #e7edf3 !important
       color $textColor
