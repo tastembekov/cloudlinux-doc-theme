@@ -3,7 +3,7 @@
     class="sidebar-group"
     :class="{ first, collapsable }"
   >
-    <p
+    <div
       class="sidebar-heading"
       :class="{ open }"
       @click="$emit('toggle')"
@@ -14,7 +14,7 @@
         v-if="collapsable"
         :class="open ? 'down' : 'right'">
       </span>
-    </p>
+    </div>
 
     <DropdownTransition>
       <ul
@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style lang="stylus">
+  @import './styles/config.styl'
+
 .sidebar-group
   &:not(.first)
     margin-top 1em
@@ -53,15 +55,17 @@ export default {
       color inherit
 
 .sidebar-heading
-  color #999
-  transition color .15s ease
+  color #3a3d3f
   cursor pointer
-  font-size 1.1em
-  font-weight bold
-  // text-transform uppercase
+  font-size 0.95em
   padding 0 1.5rem
-  margin-top 0
-  margin-bottom 0.5rem
+  margin 0 1.2rem 1.5rem 1.6rem
+  height 41px
+  line-height 41px
+  background-color $codeBgColor
+  border-radius 4px
+  font-weight 600
+
   &.open, &:hover
     color inherit
   .arrow

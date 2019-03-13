@@ -14,19 +14,19 @@
       >
       <span
         ref="siteName"
-        class="site-name"
+        class="site-name site-name--documentation"
         v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >{{ $siteTitle }}</span>
     </router-link>
 
-      <!-- <div class="line"></div> -->
+    <!-- <div class="line"></div> -->
 
-      <AlgoliaSearchBox
-        v-if="isAlgoliaSearch"
-        :options="algolia"
-      />
-      <SearchBox v-else-if="$site.themeConfig.search !== false"/>
+    <AlgoliaSearchBox
+      v-if="isAlgoliaSearch"
+      :options="algolia"
+    />
+    <SearchBox v-else-if="$site.themeConfig.search !== false"/>
 
     <div
       class="links"
@@ -35,7 +35,7 @@
       }"
     >
       <a :href="$site.themeConfig.try_free" target="_blank" class="btn">
-        Try Free
+        {{ tryFreeTitle }}
       </a>
 
       <NavLinks class="can-hide"/>
@@ -80,6 +80,10 @@ export default {
 
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+
+    tryFreeTitle() {
+      return this.$themeLocaleConfig.tryFree || 'Try Free';
     }
   }
 }
@@ -100,29 +104,35 @@ $navbar-horizontal-padding = 1.5rem
 
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
-  line-height $navbarHeight - 1.4rem
+  line-height $navbarHeight - 1.5rem
   position relative
+  height: $navbarHeight - 3rem
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.23);
+
   a, span, img
     display inline-block
   .logo
-    height $navbarHeight - 1.4rem
+    height $navbarHeight - 1.6rem
     min-width $navbarHeight - 1.4rem
-    margin-right 0.8rem
+    margin-right 1.5rem
     vertical-align top
   .site-name
-    font-size 1.3rem
+    font-size 1rem
     font-weight 600
     color white
     position relative
+  .site-name--documentation
+    border-right: 1px solid #fff;
+    padding-right: 1rem;
+    line-height: 1.2rem;
   .links
-    padding-left 1.5rem
     box-sizing border-box
     background-color $mainColor
     white-space nowrap
     font-size 0.9rem
     position absolute
     right $navbar-horizontal-padding
-    top $navbar-vertical-padding
+    top 0
     display flex
     .search-box
       flex: 0 0 auto
@@ -137,31 +147,34 @@ $navbar-horizontal-padding = 1.5rem
       display none
     .links
       padding-left 1.5rem
+    .btn
+      margin: 0.65rem 0 0 0
 
 .btn
     // -webkit-appearance: button;
     // -moz-appearance: button;
     // appearance: button;
-    padding 0 5px 0 5px
+    padding 0.7rem 1.6rem;
 
     position: relative;
     background-color: $mainColor;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     border-radius: 4px;
-    font-size: 14px;
-    margin 0 1rem 0 1rem
+    font-size: 0.88rem;
+    line-height: 1rem;
+    margin 0.65rem 1rem 0 0
     color: #FFFFFF;
-    // padding: 20px;
-    // width: 111px;
-    height: 43px;
     text-align: center;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    font-weight bold
+    font-weight 600
 
+
+.btn:hover
+  text-decoration underline
 
 .btn:after
     content: "";

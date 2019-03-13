@@ -42,7 +42,8 @@ export default {
         const routes = this.$router.options.routes
         const themeLocales = this.$site.themeConfig.locales || {}
         const languageDropdown = {
-          text: this.$themeLocaleConfig.selectText || 'Languages',
+          title: this.$themeLocaleConfig.title || 'Language',
+          text: this.$themeLocaleConfig.selectText || 'En',
           items: Object.keys(locales).map(path => {
             const locale = locales[path]
             const text = themeLocales[path] && themeLocales[path].label || locale.lang
@@ -110,24 +111,24 @@ export default {
 .nav-links
   display inline-block
   a
-    line-height 1.4rem
+    line-height 3.7rem
     color #fff
     &:hover, &.router-link-active
       color $accentColor
   .nav-item
     position relative
     display inline-block
-    margin-left 1.5rem
-    line-height 2rem
-    &:first-child
-      margin-left 0
+    height 3rem
   .repo-link
     margin-left 1.5rem
 
 @media (max-width: $MQMobile)
   .nav-links
+    a
+      line-height 1.25rem
     .nav-item, .repo-link
       margin-left 0
+      height 1rem
 
 @media (min-width: $MQMobile)
   .nav-links a
