@@ -16,23 +16,17 @@ const msgs = [
   `Looks like we've got some broken links.`
 ];
 
+import RedirectMixin from './mixins/RedirectMixin';
+
 export default {
+  mixins: [RedirectMixin],
   data() {
     return {
       showNotFound: false
     };
   },
-  created() {
-    const redirectionMapping = this.$site.themeConfig.redirectionMapping;
-    if (redirectionMapping) {
-      const newUrl = redirectionMapping[this.$route.fullPath];
-      if (newUrl) {
-        this.$router.replace(newUrl);
-        return;
-      }
-    }
-
-    this.showNotFound = true;
+  mounted() {
+    this.showNotFound = !this.checkRedirect();
   },
   methods: {
     getMsg() {

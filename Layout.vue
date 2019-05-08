@@ -68,8 +68,10 @@ import Sidebar from './Sidebar.vue'
 import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 import GTranslateIO from './GTranslateIO.vue'
+import Redirect from './components/Redirect.vue';
 
 Vue.component('gtranslate-io', GTranslateIO)
+Vue.component('Redirect', Redirect);
 
 export default {
   components: { Home, Page, Sidebar, Navbar, SWUpdatePopup, Footer},
