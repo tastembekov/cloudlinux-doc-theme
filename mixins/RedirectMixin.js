@@ -5,6 +5,11 @@ export default {
 
             if (redirectionMapping) {
                 let path = this.$route.fullPath;
+
+                if (path === '/') {
+                    this.$router.replace(this.$site.themeConfig.defaultURL);
+                    return true;
+                }
     
                 if (path.substr(0, 2) === '/?') {
                     path = [path.slice(0, 1), 'index.html', path.slice(1)].join(''); // insert index.html into path
