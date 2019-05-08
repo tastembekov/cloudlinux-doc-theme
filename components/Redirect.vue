@@ -1,7 +1,7 @@
 <template></template>
 
 <script>
-import RedirectMixin from 'vuepress-theme-cloudlinux/mixins/RedirectMixin';
+import RedirectMixin from '../mixins/RedirectMixin';
 
 export default {
     mixins: [RedirectMixin],
