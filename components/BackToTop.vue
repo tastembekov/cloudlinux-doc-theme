@@ -18,12 +18,16 @@
         isVisible: false,
       }
     },
-    created() {
-      this.handleScroll();
-      window.addEventListener('scroll', this.handleScroll);
+    mounted() {
+      if (window) {
+        this.handleScroll();
+        window.addEventListener('scroll', this.handleScroll);
+      }
     },
     destroyed() {
-      window.removeEventListener('scroll', this.handleScroll);
+      if (window) {
+        window.removeEventListener('scroll', this.handleScroll);
+      }
     },
     methods: {
       handleScroll() {
