@@ -2,18 +2,16 @@
   <div class="page-nav" v-if="prev || next">
       <router-link
         v-if="prev"
-        class="link prev"
+        class="nav-arrow left"
         :to="prev.path"
       >
-        ←
       </router-link>
 
       <router-link
         v-if="next"
-        class="link"
+        class="nav-arrow right"
         :to="next.path"
       >
-        →
       </router-link>
   </div>
 </template>
@@ -89,27 +87,4 @@
     position absolute
     right 0
     top 30px
-
-    .link
-      border-radius 1.1rem
-      border 1px solid #f2f4f5
-      text-align center
-      height 2.2rem
-      width 2.2rem
-      display block
-      font-size 1.7rem
-      line-height 2.2rem
-      color #3a3d3f
-      font-weight 200
-      box-shadow 0 0 1px 1px #f2f4f5
-
-      &.prev
-        margin-right 9px
-
-      &:hover
-        color #adadad
-
-    // clear float
-    .next
-      float right
 </style>

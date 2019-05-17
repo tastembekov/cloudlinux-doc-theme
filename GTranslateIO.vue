@@ -4,8 +4,6 @@ import Vue from "vue";
 export default {
   name: "gtranslate-io",
   render() {
-    debugger
-
     const isClient = typeof window !== "undefined";
     if (isClient) {
       var self = this;
@@ -15,8 +13,6 @@ export default {
       const host = this.$site.themeConfig.translationSource;
 
       const url = `${proto}//${this.$lang}.${host}/${path}`;
-
-      debugger;
 
       // gtranslate.io has ability to work via dns
       fetch(url)
@@ -31,15 +27,12 @@ export default {
           const htmlDoc = parser.parseFromString(text, "text/html");
           const el = htmlDoc.getElementsByClassName("content")[0];
 
-          // debugger
-
           const res = Vue.compile("<div>" + el.innerHTML + "</div>");
           self.$options.render = res.render;
           self.$options.staticRenderFns = res.staticRenderFns;
           self.$forceUpdate();
         })
         .catch(err => {
-          debugger;
           console.error(err);
         });
     }
