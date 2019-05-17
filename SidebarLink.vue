@@ -92,5 +92,5 @@ a.sidebar-link
     &.active
       font-weight 500
       border-right 3px solid $accentColor
-      background-color #f3f5f7
+      background-color $sidebarActiveColor
 </style>
