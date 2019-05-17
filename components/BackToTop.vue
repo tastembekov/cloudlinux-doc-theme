@@ -1,18 +1,48 @@
 <template>
   <div class="back-to-top">
-    <router-link class="nav-arrow top back-to-top__link" to="#app"></router-link>
+    <router-link v-bind:class="{ active: isVisible }" class="nav-arrow top back-to-top__link" to="#app"></router-link>
   </div>
 </template>
 
 <script>
   export default {
-    name: "BackToTop"
+    name: "BackToTop",
+    props: {
+      boundary: {
+        type: Number,
+        default: 200
+      },
+    },
+    data() {
+      return {
+        isVisible: false,
+      }
+    },
+    created() {
+      this.handleScroll();
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+      handleScroll() {
+        this.isVisible = window.pageYOffset > this.boundary;
+      },
+    },
   };
 </script>
 
 <style lang="stylus" scoped>
-  .back-to-top__link    
-    position absolute
+  .back-to-top__link
+    position fixed
     right 6rem
-    margin-top -3rem
+    bottom 10rem
+    visibility hidden
+    opacity 0
+    transition visibility 0s, opacity 0.5s linear
+
+    &.active
+      visibility visible
+      opacity 1
 </style>
