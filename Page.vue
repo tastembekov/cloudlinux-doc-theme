@@ -32,6 +32,8 @@
       </div>
     </div>
 
+    <BackToTop />
+
     <slot name="bottom"/>
   </div>
 </template>
@@ -41,11 +43,12 @@ import { normalize, outboundRE, endingSlashRE } from './util'
 
 import Breadcrumb from './components/Breadcrumb.vue';
 import PageNav from './components/PageNav.vue';
+import BackToTop from './components/BackToTop.vue';
 
 export default {
   props: ['sidebarItems'],
 
-  components: { Breadcrumb, PageNav },
+  components: { Breadcrumb, PageNav, BackToTop },
 
   computed: {
     lastUpdated () {
