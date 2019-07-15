@@ -1,47 +1,49 @@
 {
-    "name": "vuepress-theme-cloudlinux",
-    "version": "0.0.1",
-    "description": "Vuepress theme - Cloudlinux",
-    "author": "Telepenin Nikolay <ntelepenin@cloudlinux.com>",
-    "license": "MIT",
-    "keywords": [
-      "vuepress",
-      "theme"
-    ],
-    "homepage": "https://github.com/telepenin/cloudlinux-doc-theme",
-    "repository": {
-      "type": "git",
-      "url": "git+https://github.com/telepenin/cloudlinux-doc-theme.git"
-    },
-    "bugs": {
-      "url": "https://github.com/telepenin/cloudlinux-doc-theme/issues"
-    },
-    "main": "Layout.vue",
-    "scripts": {
-      "lint": "eslint --fix --ext .js,.vue ."
-    },
-    "dependencies": {
-      "@fortawesome/fontawesome-svg-core": "^1.2.2",
-      "@fortawesome/free-brands-svg-icons": "^5.2.0",
-      "@fortawesome/free-regular-svg-icons": "^5.2.0",
-      "@fortawesome/free-solid-svg-icons": "^5.2.0",
-      "@fortawesome/vue-fontawesome": "0.1.1",
-      "date-fns": "^1.29.0",
-      "geopattern": "^1.2.3",
-      "vue": "^2.5.16"
-    },
-    "devDependencies": {
-      "eslint": "^5.5.0",
-      "eslint-config-standard": "^12.0.0",
-      "eslint-plugin-import": "^2.14.0",
-      "eslint-plugin-node": "^7.0.1",
-      "eslint-plugin-promise": "^4.0.1",
-      "eslint-plugin-standard": "^4.0.0",
-      "eslint-plugin-vue": "^5.0.0-beta.3",
-      "husky": "^1.0.0-rc.14",
-      "lint-staged": "^7.2.2"
-    },
-    "peerDependencies": {
-      "vuepress": "^0.14"
-    }
+  "name": "vuepress-theme-cloudlinux",
+  "version": "0.0.1",
+  "description": "Vuepress theme - Cloudlinux",
+  "author": "Telepenin Nikolay <ntelepenin@cloudlinux.com>",
+  "license": "MIT",
+  "keywords": [
+    "vuepress",
+    "theme"
+  ],
+  "homepage": "https://github.com/telepenin/cloudlinux-doc-theme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/telepenin/cloudlinux-doc-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/telepenin/cloudlinux-doc-theme/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --fix --ext .js,.vue ."
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-brands-svg-icons": "^5.2.0",
+    "@fortawesome/free-regular-svg-icons": "^5.2.0",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
+    "@fortawesome/vue-fontawesome": "0.1.1",
+    "date-fns": "^1.29.0",
+    "geopattern": "^1.2.3",
+    "lodash": "^4.17.14",
+    "vue": "^2.5.16",
+    "vuepress": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.0.0-beta.3",
+    "husky": "^1.0.0-rc.14",
+    "lint-staged": "^7.2.2"
+  },
+  "peerDependencies": {
+    "vuepress": "^0.14"
   }
+}
