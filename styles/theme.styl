@@ -208,5 +208,13 @@ th, td
   .sidebar
     margin-top 2rem
 
+@media (max-width: $MQMobileNarrow)
+  body.sidebar-open
+    overflow hidden
+
+@media (max-width: $MQMobile)
+  body.products-menu-open
+    overflow hidden
+
 @require './mobile.styl'
 

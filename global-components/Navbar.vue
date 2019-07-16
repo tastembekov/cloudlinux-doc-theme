@@ -4,7 +4,7 @@
       <section class="navbar__block">
         <SidebarButton
           v-if="showSidebar"
-          :isOpened="isSidebarOpened"
+          :isOpened="isSidebarOpen"
           @toggle-sidebar="$emit('toggle-sidebar')"
         />
 
@@ -49,7 +49,7 @@
       <section class="navbar__block">
         <button
           class="menu-btn"
-          :class="{ 'menu-btn--opened': productsDisplayed }"
+          :class="{ 'menu-btn--opened': isProductsOpen }"
           @click="toggleProducts"
         >
           {{ $themeLocaleConfig.navBar.products }}
@@ -68,8 +68,8 @@
       </section>
     </header>
     <ProductsMenu
-      v-if="productsDisplayed"
-      @close-menu="productsDisplayed = false"
+      v-if="isProductsOpen"
+      @close-menu="setProductsOpen(false)"
     />
   </section>
 </template>
@@ -80,6 +80,7 @@
   import SearchBox from './SearchBox.vue'
   import NavLinks from './NavLinks.vue'
   import ProductsMenu from "../components/ProductsMenu";
+  import {mapActions, mapGetters} from "vuex";
 
   export default {
     props: {
@@ -95,7 +96,6 @@
         type: Boolean,
         default: true,
       },
-      isSidebarOpened: Boolean,
     },
     components: {SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox, ProductsMenu},
 
@@ -122,12 +122,19 @@
     },
 
     methods: {
+      ...mapActions('page', [
+        'setProductsOpen',
+      ]),
       toggleProducts() {
-        this.productsDisplayed = !this.productsDisplayed;
+        this.setProductsOpen(!this.isProductsOpen);
       }
     },
 
     computed: {
+      ...mapGetters('page', [
+        'isSidebarOpen',
+        'isProductsOpen',
+      ]),
       algolia() {
         return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
       },

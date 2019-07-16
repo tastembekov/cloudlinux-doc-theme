@@ -4,6 +4,7 @@ import DocumentationLayout from "./layouts/DocumentationLayout";
 import KnowledgeBaseLayout from "./layouts/KnowledgeBaseLayout";
 import GettingStartedLayout from "./layouts/GettingStartedLayout";
 import VideoTutorialsLayout from "./layouts/VideoTutorialsLayout";
+import store from './store';
 
 const pageTypeByUrl = {
   '/home/': 'product',
@@ -18,6 +19,9 @@ export default ({
                   router, // the router instance for the app
                   siteData // site metadata
                 }) => {
+
+  Vue.mixin({store: store})
+
   Vue.component('NotFound', NotFound);
   Vue.component('ProductLayout', ProductLayout);
   Vue.component('DocumentationLayout', DocumentationLayout);
@@ -31,7 +35,8 @@ export default ({
         const path = this.$page.path;
         if (path) {
           const relPath = path.replace(new RegExp(`^${this.$localePath}`), '/');
-          const type = pageTypeByUrl[relPath];
+          const rootPathMatch = relPath.match(/\/[^\/]*\//)
+          const type = rootPathMatch ? pageTypeByUrl[rootPathMatch[0]] : undefined;
           if (type) {
             return type;
           }

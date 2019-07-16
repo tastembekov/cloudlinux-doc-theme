@@ -71,9 +71,15 @@
     components: {RelativeLink},
     mixins: [LanguageMixin],
     mounted() {
+      if (!document) {
+        return
+      }
       document.addEventListener('click', this.onDocumentClicked);
     },
     beforeDestroy() {
+      if (!document) {
+        return
+      }
       document.removeEventListener('click', this.onDocumentClicked);
     },
     data() {

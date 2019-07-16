@@ -7,7 +7,6 @@
   >
     <Navbar
       v-if="shouldShowNavbar"
-      :is-sidebar-opened="isSidebarOpen"
       @toggle-sidebar="toggleSidebar"
     />
 
@@ -60,6 +59,7 @@ import SWUpdatePopup from '../global-components/SWUpdatePopup.vue'
 import { resolveSidebarItems } from '../util'
 import GTranslateIO from '../global-components/GTranslateIO.vue'
 import Redirect from '../components/Redirect.vue';
+import {mapActions, mapGetters} from "vuex";
 
 Vue.component('gtranslate-io', GTranslateIO)
 Vue.component('Redirect', Redirect);
@@ -69,12 +69,14 @@ export default {
 
   data () {
     return {
-      isSidebarOpen: false,
       swUpdateEvent: null
     }
   },
 
   computed: {
+    ...mapGetters('page', [
+      'isSidebarOpen',
+    ]),
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
@@ -140,15 +142,19 @@ export default {
 
     this.$router.afterEach(() => {
       nprogress.done()
-      this.isSidebarOpen = false
+      this.setSidebarOpen(false)
     })
 
     this.$on('sw-updated', this.onSWUpdated)
   },
 
   methods: {
+    ...mapActions('page', [
+      'setSidebarOpen',
+    ]),
     toggleSidebar (to) {
-      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      const isOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      this.setSidebarOpen(isOpen)
     },
 
     // side swipe
