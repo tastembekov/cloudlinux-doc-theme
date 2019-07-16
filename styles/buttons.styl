@@ -1,0 +1,55 @@
+button
+  user-select none
+
+  &:focus
+    outline none
+
+.navbar-btn
+  // -webkit-appearance: button;
+  // -moz-appearance: button;
+  // appearance: button;
+  white-space pre-line
+  min-height 2.69rem
+  height 100%
+  box-sizing border-box
+  padding 0 22px 0 24px
+  display flex
+  align-items center
+  position: relative;
+  background-color transparent
+  border: 2px solid #fff;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: #FFFFFF;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  font-weight 600
+
+  &--try-free
+    background-color #fff
+    color $mainColor
+
+  &:hover
+    text-decoration underline
+
+  &:after
+    content: "";
+    background: #fff;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -30px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+
+  &:active:after
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s

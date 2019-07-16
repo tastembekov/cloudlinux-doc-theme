@@ -108,19 +108,19 @@ function resolvePath (relative, base, append) {
   return stack.join('/')
 }
 
-export function resolveSidebarItems (page, route, site, localePath) {
+export function resolveSidebarItems (page, route, site, localePath, layoutCfg) {
   const { pages, themeConfig } = site
 
   const localeConfig = localePath && themeConfig.locales
     ? themeConfig.locales[localePath] || themeConfig
     : themeConfig
 
-  const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || themeConfig.sidebar
+  const pageSidebarConfig = page.frontmatter.sidebar || localeConfig.sidebar || layoutCfg.sidebar || themeConfig.sidebar
   if (pageSidebarConfig === 'auto') {
     return resolveHeaders(page)
   }
 
-  const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
+  const sidebarConfig = layoutCfg.sidebar || localeConfig.sidebar || themeConfig.sidebar
   if (!sidebarConfig) {
     return []
   } else {
