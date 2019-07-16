@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/telepenin/cloudlinux-doc-theme/issues"
   },
-  "main": "layouts/Layout.vue",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue ."
   },
