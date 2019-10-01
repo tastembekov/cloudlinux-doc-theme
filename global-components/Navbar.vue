@@ -48,10 +48,13 @@
       </section>
       <section class="navbar__block">
         <button
-          class="menu-btn"
+          class="menu-btn menu-btn--products-list"
           :class="{ 'menu-btn--opened': isProductsOpen }"
           @click="toggleProducts"
         >
+          <svg class="icon icon--products-list" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class=""></path>
+          </svg>
           {{ $themeLocaleConfig.navBar.products }}
         </button>
         <button class="navbar-btn navbar-btn--submit-request">{{ $themeLocaleConfig.navBar.submitRequest }}</button>
@@ -216,6 +219,12 @@
   .navbar-btn
     margin-right 1rem
 
+  .icon
+    &--products-list
+      height auto
+      width 17px
+      margin-right 6px
+
   .logo-short
     margin-right 1rem
     display none
@@ -251,6 +260,10 @@
 
       &:after
         transform rotate(0deg)
+
+    &--products-list
+      font-size 14px
+      font-weight normal
 
   @media (max-width: $MQDesktop)
     .nav-item .title
