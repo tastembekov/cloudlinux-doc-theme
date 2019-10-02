@@ -247,7 +247,6 @@
     &:after
       transform rotate(180deg)
       transition 0.3s
-      margin-top -2px
       margin-left 6px
       content ''
       display: block;
