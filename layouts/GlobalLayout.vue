@@ -12,6 +12,8 @@ export default {
     getLayout () {
       if (this.$page.path) {
         switch (this.$pageType) {
+          case 'helpCenter':
+              return 'HelpCenterLayout';
           case 'product':
             return 'ProductLayout';
           case 'gettingStarted':

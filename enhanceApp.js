@@ -1,4 +1,5 @@
 import NotFound from "./global-components/NotFound";
+import HelpCenterLayout from "./layouts/HelpCenterLayout";
 import ProductLayout from "./layouts/ProductLayout";
 import DocumentationLayout from "./layouts/DocumentationLayout";
 import KnowledgeBaseLayout from "./layouts/KnowledgeBaseLayout";
@@ -29,9 +30,15 @@ export default ({
   Vue.component('GettingStartedLayout', GettingStartedLayout);
   Vue.component('VideoTutorialsLayout', VideoTutorialsLayout);
   Vue.component('ProductLayout', ProductLayout);
+  Vue.component('HelpCenterLayout', HelpCenterLayout);
   Vue.mixin({
     computed: {
       $pageType() {
+        const isHelpCenterMain = this.$site.themeConfig.isHelpCenterMain;
+        if (isHelpCenterMain === true) {
+          return 'helpCenter';
+        }
+
         const path = this.$page.path;
         if (path) {
           const relPath = path.replace(new RegExp(`^${this.$localePath}`), '/');
