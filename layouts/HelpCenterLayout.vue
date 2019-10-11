@@ -6,9 +6,14 @@
         :showTitle="false"
         :showSidebar="false"
       />
-      <h1 class="product-page__title">
-        {{ $themeLocaleConfig.productPage.title }}
-      </h1>
+      <div class="product-page__title-container">
+        <h1 class="product-page__title">
+          {{ $themeLocaleConfig.productPage.title }}
+        </h1>
+        <div class="product-page__subtitle">
+          {{ $themeLocaleConfig.productPage.subtitle }}
+        </div>
+      </div>
     </header>
     <div class="product-page__content">
       <HelpCenterProducts/>
@@ -48,12 +53,15 @@
       height 100%
       flex 1
 
+    &__title-container
+      text-align center
+      color #fff
+
     &__title
       margin-top -($navbarHeight)
       margin-bottom 0
       font-size 3.43rem
       color #fff
-      text-align center
       padding 1rem 2rem
 
     .navbar
