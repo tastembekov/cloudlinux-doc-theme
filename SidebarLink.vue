@@ -43,20 +43,20 @@ function renderLink (h, to, text, active) {
   }, text)
 }
 
-function renderHeader (h, text, active) {
-    return h('div', {
-        class: {
-            active,
-            'sidebar-link': true
-        },
-        on: {
-            click: (e) => {
-                const classes = e.target.classList;
-                const isCollapsed = classes.contains('collapsed');
-                isCollapsed ? classes.remove('collapsed') : classes.add('collapsed');
-            }
-        },
-    }, text)
+function renderHeader(h, text, active) {
+  return h('div', {
+    class: {
+      active,
+      'sidebar-link': true
+    },
+    on: {
+      click: (e) => {
+        const classes = e.target.classList;
+        const isCollapsed = classes.contains('collapsed');
+        isCollapsed ? classes.remove('collapsed') : classes.add('collapsed');
+      }
+    },
+  }, text)
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {
