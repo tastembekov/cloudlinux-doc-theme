@@ -1,5 +1,5 @@
 <script>
-import { isActive, hashRE, groupHeaders } from './util'
+import { isActive, groupHeaders } from './util'
 
 export default {
   functional: true,
@@ -15,19 +15,16 @@ export default {
     const active = item.type === 'auto'
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
-    const link = renderLink(h, item.path, item.title || item.path, active)
+    const link = renderHeader(h, item.title || item.path, active)
     const configDepth = $page.frontmatter.sidebarDepth != null
       ? $page.frontmatter.sidebarDepth
       : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
-    const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
-    } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
+    } else {
       const children = groupHeaders(item.headers)
       return [link, renderChildren(h, children, item.path, $route, maxDepth)]
-    } else {
-      return link
     }
   }
 }
@@ -43,6 +40,22 @@ function renderLink (h, to, text, active) {
       active,
       'sidebar-link': true
     }
+  }, text)
+}
+
+function renderHeader(h, text, active) {
+  return h('div', {
+    class: {
+      active,
+      'sidebar-link': true
+    },
+    on: {
+      click: (e) => {
+        const classes = e.target.classList;
+        const isCollapsed = classes.contains('collapsed');
+        isCollapsed ? classes.remove('collapsed') : classes.add('collapsed');
+      }
+    },
   }, text)
 }
 
@@ -65,7 +78,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   padding-left 1rem
   font-size 0.95em
 
-a.sidebar-link
+.sidebar-link
   font-weight 400
   display inline-block
   color $textColor
@@ -75,6 +88,7 @@ a.sidebar-link
   background-repeat no-repeat
   background-position left 5px center
   background-size 9px 16px
+  cursor pointer
   &:hover
     color $accentColor
   &.active
@@ -84,6 +98,11 @@ a.sidebar-link
     background-image url('data:image/png;base64,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')
     background-size 16px 9px
     background-position left center
+  &.active + .sidebar-sub-headers,
+  &.collapsed + .sidebar-sub-headers
+    display block
+  & + .sidebar-sub-headers
+    display none
   .sidebar-group &
     padding 1rem 0 1rem 2rem
   .sidebar-sub-headers &
