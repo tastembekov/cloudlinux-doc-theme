@@ -13,6 +13,7 @@
         <div class="product-page__subtitle">
           {{ $themeLocaleConfig.productPage.subtitle }}
         </div>
+        <ProductsSearchBar />
       </div>
     </header>
     <div class="product-page__content">
@@ -25,9 +26,10 @@
   import Navbar from '../global-components/Navbar.vue'
   import HelpCenterProducts from "../components/HelpCenterProducts";
   import Footer from "../global-components/Footer";
+  import ProductsSearchBar from '../components/help-center-search/ProductsSearchBar';
 
   export default {
-    components: {Navbar, HelpCenterProducts, Footer},
+    components: {Navbar, HelpCenterProducts, Footer, ProductsSearchBar},
   }
 </script>
 
