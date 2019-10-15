@@ -64,7 +64,7 @@
            'max-width': linksWrapMaxWidth + 'px'
           }"
         >
-          <a :href="$site.themeConfig.try_free" target="_blank" class="navbar-btn navbar-btn--try-free">{{ tryFreeTitle }}</a>
+          <a :href="$themeLocaleConfig.try_free" target="_blank" class="navbar-btn navbar-btn--try-free">{{ tryFreeTitle }}</a>
 
           <NavLinks class="can-hide"/>
         </div>

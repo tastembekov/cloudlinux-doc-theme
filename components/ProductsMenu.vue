@@ -17,7 +17,7 @@
 
         <section class="actions">
           <button class="navbar-btn navbar-btn--submit-request">{{ $themeLocaleConfig.navBar.submitRequest }}</button>
-          <a :href="$site.themeConfig.try_free" target="_blank" class="navbar-btn navbar-btn--try-free">{{ tryFreeTitle }}</a>
+          <a :href="$themeLocaleConfig.try_free" target="_blank" class="navbar-btn navbar-btn--try-free">{{ tryFreeTitle }}</a>
         </section>
       </div>
 
