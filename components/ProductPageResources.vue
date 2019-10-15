@@ -15,7 +15,7 @@
           </header>
           <div class="resource__desc">{{ resource.description }}</div>
           <div class="resource__link-container">
-            <router-link class="resource__link" :to="resource.route">{{ resource.linkTitle }} →</router-link>
+            <RelativeLink class="resource__link" :url="resource.route">{{ resource.linkTitle }} →</RelativeLink>
           </div>
         </li>
       </ul>
@@ -24,7 +24,10 @@
 </template>
 
 <script lang="js">
-  export default {}
+  import RelativeLink from "./RelativeLink";
+  export default {
+    components: {RelativeLink},
+  }
 </script>
 
 <style scoped lang="stylus">
