@@ -26,7 +26,7 @@
   import Navbar from '../global-components/Navbar.vue'
   import HelpCenterProducts from "../components/HelpCenterProducts";
   import Footer from "../global-components/Footer";
-  import ProductsSearchBar from '../components/help-center-search/ProductsSearchBar';
+  import ProductsSearchBar from '../components/algolia-search-home/ProductsSearchBar';
 
   export default {
     components: {Navbar, HelpCenterProducts, Footer, ProductsSearchBar},
