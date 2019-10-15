@@ -201,7 +201,7 @@ export default {
       cursor auto
       border-color #fff
     &::placeholder
-      color rgba(255, 255, 255, 0.5)
+      color #FFF
   .suggestions
     background #fff
     width 20rem
