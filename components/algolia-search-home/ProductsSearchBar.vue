@@ -2,8 +2,8 @@
     <div class="search-bar">
         <div class="search-bar__search-input">
             <div class="search-input">
-                <div class="search-input__search-type">
-                    <ProductsList :items="searchDropDownItems" v-on:valueChanged="valueChanged($event)"/>
+                <div class="search-input__search-type" v-if="$site.themeConfig.showSearchProductList">
+                    <ProductsList class="search-input__products-list" :items="searchDropDownItems" v-on:valueChanged="valueChanged($event)"/>
                 </div>
                 <div class="search-input__input-wrapper">
                     <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algoliaOptions"/>
@@ -119,35 +119,36 @@
 
     .search-input
         display flex
-        width 830px
+        width 790px
         height 65px
+        padding-left 40px
+        border-radius 30px
+        background-color #FFF
+
+        &__products-list
+            height 70%
+            padding 0 20px 0 0
+            border-right 1px solid #f0f0f0
 
         &__search-type
-            width 213px
+            display flex
+            align-items center
             height 65px
-            padding-left 40px
             box-sizing border-box
             color #373737
-            background-color #FFF
             font-size 14px
             font-weight 600
-            border-radius 30px
-            border-top-right-radius 0
-            border-bottom-right-radius 0
+            margin-right 25px
 
         &__input-wrapper
             display flex
             align-items center
-            width 560px
+            width 100%
             background-color #FFF
 
         &__icon-wrapper
             display flex
             width 57px
             height 65px
-            background-color #FFF
-            border-radius 30px
-            border-top-left-radius 0
-            border-bottom-left-radius 0
-
+            padding-left 20px
 </style>

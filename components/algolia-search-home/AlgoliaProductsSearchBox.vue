@@ -94,19 +94,18 @@
 
 <style lang="stylus" scoped>
     .algolia-search-box
+        width 100%
         position relative
 
     .search-input
-        width 560px
+        width 100%
         height 48px
+        box-sizing border-box
         font-size 14px
         color #373737
-        box-sizing border-box
         line-height 48px
-        padding-left 25px
         border none
         outline none
-        border-left 1px solid #f0f0f0
 
         &::placeholder
             color #adadad

@@ -2,7 +2,10 @@
     <div class="dropdown-wrapper">
         <span v-if="!!items.title" class="title">{{ items.title }}:</span>
         <a class="dropdown-title">
-            <span class="text">{{ items.text }} <span class="arrow"></span></span>
+            <span class="text">
+                {{ items.text }}
+                <span class="dropdown-arrow"></span>
+            </span>
         </a>
 
         <ul class="nav-dropdown">
@@ -63,7 +66,11 @@
         position relative
 
         .dropdown-title
+            color #373737
             display flex
+
+        .dropdown-arrow
+            margin 2px 0 0 10px
 
         .nav-dropdown
             .dropdown-item
@@ -130,13 +137,6 @@
                     align-items center
                     margin-left 6px
                     font-weight 600
-
-                .arrow
-                    border-left 4px solid transparent
-                    border-right 4px solid transparent
-                    border-top 6px solid $arrowBgColor
-                    border-bottom 0
-                    margin-left 4px
 
             .nav-dropdown
                 display none
