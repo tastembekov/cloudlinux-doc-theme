@@ -27,12 +27,12 @@ export default {
         const children = groupHeaders(item.headers);
         return [link, renderChildren(h, children, item.path, $route, maxDepth)];
       }
-      return renderLink(h, item.path, item.title || item.path, active);
+      return renderLink(h, item.path, item.title || item.path, active, item.children);
     }
   }
 }
 
-function renderLink (h, to, text, active) {
+function renderLink (h, to, text, active, children) {
   const link = h('router-link', {
       props: {
           to,
@@ -47,7 +47,7 @@ function renderLink (h, to, text, active) {
   return h('div', {
     class: {
         active,
-        'sidebar-link-container': true
+        'sidebar-link-container': !!children
     },
     on: {
         click: (e) => {
@@ -87,7 +87,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
             'sidebar-sub-header': true
         }
     }, [
-      renderLink(h, path + '#' + c.slug, c.title, active),
+      renderLink(h, path + '#' + c.slug, c.title, active, c.children),
       renderChildren(h, c.children, path, route, maxDepth, depth + 1)
     ])
   }))
