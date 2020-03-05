@@ -34,6 +34,10 @@
         'max-width': linksWrapMaxWidth + 'px'
       }"
     >
+      <a href="https://cloudlinux.zendesk.com/hc/en-us/requests/new" target="_blank" class="btn">
+        {{ submitRequestTitle }}
+      </a>
+
       <a :href="$site.themeConfig.try_free" target="_blank" class="btn">
         {{ tryFreeTitle }}
       </a>
@@ -84,7 +88,11 @@ export default {
 
     tryFreeTitle() {
       return this.$themeLocaleConfig.tryFree || 'Try Free';
-    }
+    },
+
+    submitRequestTitle() {
+      return this.$themeLocaleConfig.submitRequest || 'Submit Request';
+    },
   }
 }
 
