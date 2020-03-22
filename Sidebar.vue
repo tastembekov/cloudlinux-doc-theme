@@ -90,6 +90,7 @@ function resolveOpenGroupIndex (route, items) {
     display block
   .sidebar-group-items
     margin-left 2rem
+    margin-right 2rem
   .nav-links
     display none
     border-bottom 1px solid $borderColor
