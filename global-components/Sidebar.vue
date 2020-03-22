@@ -87,6 +87,8 @@ function resolveOpenGroupIndex (route, items) {
     list-style-type none
   a
     display block
+  .sidebar-group-items
+    margin-left 2rem
   .nav-links
     display none
     border-bottom 1px solid $borderColor
